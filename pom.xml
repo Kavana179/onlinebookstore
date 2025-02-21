@@ -2,6 +2,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>onlinebookstore</groupId>
     <artifactId>onlinebookstore</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -11,6 +12,7 @@
     <properties>
         <sonar.organization>kavana179</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.projectKey>kavana179_onlinebookstore</sonar.projectKey> <!-- Add the project key -->
     </properties>
 
     <build>
@@ -56,6 +58,28 @@
                 <configuration>
                     <warSourceDirectory>WebContent</warSourceDirectory>
                 </configuration>
+            </plugin>
+
+            <!-- JaCoCo Plugin for Code Coverage -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.7</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal> <!-- Add agent to collect coverage during tests -->
+                            <goal>report</goal> <!-- Generate a report after tests -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- SonarQube Plugin -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.0.2155</version>
             </plugin>
         </plugins>
     </build>
